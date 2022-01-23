@@ -1,6 +1,6 @@
 # Annotations Reference:  https://kubernetes-sigs.github.io/aws-alb-ingress-controller/guide/ingress/annotation/
 #apiVersion: networking.k8s.io/v1
-# kind: IngressClass
+# kind: Ingress
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -25,9 +25,10 @@ spec:
     - http:
         paths:
           - path: /*
+            pathType: Prefix
             backend:
-              serviceName: usermgmt-restapp-nodeport-service
-              servicePort: 8095
-      
+              service:
+                name: usermgmt-restapp-nodeport-service
+                port: 8095
+ 
 
-    
